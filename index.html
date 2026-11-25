@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Charu Shukla Badeka, fintech co-founder and Head of Technology. ETL, reconciliation, dashboard design, anomaly detection and financial workflow automation.">
+<title>Charu Shukla Badeka | Fintech Technology Leadership</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f5f8f7;
+  --panel: #fff;
+  --ink: #172522;
+  --muted: #465b55;
+  --line: #c9d7d1;
+  --accent: #155d50;
+  --serif: Georgia, serif;
+  --mono: ui-monospace, Consolas, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; }
+a { color: var(--accent); text-underline-offset: .28em; }
+a:hover { color: var(--ink); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+.skip { position: absolute; left: .75rem; top: .75rem; transform: translateY(-220%); background: var(--panel); padding: .5rem 1rem; z-index: 2; }
+.skip:focus { transform: none; }
+.wrap { width: min(1080px, calc(100% - 3.5rem)); margin-inline: auto; }
+header, footer { border-block-end: 1px solid var(--line); }
+header .wrap, footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 2rem; padding-block: 1rem; }
+.brand { color: var(--ink); text-decoration: none; font-weight: 700; }
+.brand span { color: var(--accent); font: 700 .875rem var(--mono); padding-right: .7rem; }
+nav, .contact-links { display: flex; flex-wrap: wrap; gap: .5rem 1.35rem; }
+nav a { text-decoration: none; font-size: .9375rem; }
+nav a:hover { text-decoration: underline; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, .75fr); align-items: end; gap: 2rem 4rem; padding-block: clamp(3rem, 8vw, 7.5rem); }
+.kicker, .period { color: var(--accent); font: .875rem/1.5 var(--mono); margin: 0 0 .9rem; }
+.kicker { letter-spacing: .09em; text-transform: uppercase; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.045em; }
+h1 { font-size: clamp(2.95rem, 7.8vw, 6.65rem); line-height: .95; margin-bottom: 1.45rem; }
+h2 { font-size: clamp(2.15rem, 4.25vw, 3.8rem); line-height: 1.03; margin-bottom: .85rem; }
+h3, dt { font-size: 1.075rem; line-height: 1.4; font-weight: 670; margin-bottom: .3rem; }
+p, dd { color: var(--muted); }
+.lead { max-width: 49ch; font-size: clamp(1.075rem, 1.8vw, 1.22rem); margin-bottom: 0; }
+.hero-aside { border-top: 2px solid var(--accent); padding-top: 1.15rem; }
+.hero-aside h2 { font: 670 1.05rem/1.4 system-ui, sans-serif; letter-spacing: normal; margin-bottom: .5rem; }
+.hero-aside p { margin-bottom: 0; }
+.section { padding-block: clamp(2.5rem, 5.5vw, 4.25rem); border-top: 1px solid var(--line); scroll-margin-top: 1rem; }
+.split { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.45fr); gap: 1.1rem 4.6rem; }
+.timeline li { border-top: 1px solid var(--line); padding: .9rem 0; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li { display: grid; grid-template-columns: 7.25rem 1fr; gap: 1rem; }
+.timeline p { margin-bottom: 0; }
+.period { margin: .1rem 0 0; }
+.demo { background: var(--panel); border: 1px solid var(--line); padding: clamp(.75rem, 3vw, 1.5rem); }
+table { width: 100%; border-collapse: collapse; text-align: left; margin-bottom: 1rem; }
+th, td { border-bottom: 1px solid var(--line); padding: .5rem .25rem; font-variant-numeric: tabular-nums; }
+thead th { font-size: .875rem; font-weight: 600; color: var(--muted); }
+.matched, .review { font-weight: 670; }
+.matched { color: var(--accent); }
+.review { color: #884714; }
+button { background: var(--panel); color: var(--accent); border: 1px solid var(--accent); padding: .52rem .8rem; font: 650 .9375rem/1.5 system-ui, sans-serif; cursor: pointer; }
+button:hover { background: var(--accent); color: #fff; }
+.demo-output { min-height: 1.65em; margin: .75rem 0 0; }
+.contact { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.contact h2 { margin: 0; }
+.action { font-weight: 650; }
+footer { border-block-start: 1px solid var(--line); border-block-end: 0; color: var(--muted); font-size: .9375rem; }
+@media (max-width: 740px) {
+  .hero, .split { grid-template-columns: 1fr; }
+  .hero-aside { max-width: 39rem; }
+}
+@media (max-width: 420px) {
+  .wrap { width: calc(100% - 1.75rem); }
+  .timeline li { grid-template-columns: 1fr; gap: .25rem; }
+  th, td { font-size: .875rem; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.section-heading { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: .8rem 3rem; margin-bottom: 1.5rem; }
+.section-heading p { max-width: 50ch; margin-bottom: 0; }
+.platform-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 1.6rem; margin: 0; }
+.platform-grid > div { padding: 1.1rem 0 1.3rem; border-top: 2px solid var(--accent); }
+.platform-grid dd { margin: 0; }
+.platform-grid dt { margin-bottom: .55rem; }
+.matrix-scroll { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); }
+.matrix-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.matrix { min-width: 760px; margin: 0; line-height: 1.52; }
+.matrix thead { background: #e8efec; }
+.matrix th, .matrix td { padding: .9rem 1rem; vertical-align: top; }
+.matrix thead th { color: var(--ink); }
+.matrix tbody th { width: 23%; text-align: left; }
+.matrix tbody th span { display: block; margin-top: .35rem; color: var(--muted); font-size: .91rem; font-weight: 500; }
+.matrix td { width: 38.5%; color: var(--muted); }
+.matrix tr:nth-child(even) { background: #f6f9f7; }
+.matrix tbody tr:last-child > * { border-bottom: 0; }
+.table-guide { display: none; margin: 0 0 .5rem; }
+.references { display: flex; flex-wrap: wrap; column-gap: 1rem; row-gap: .35rem; margin: .95rem 0 0; font-size: .9375rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.example-scroll { overflow-x: auto; }
+.example-formula { margin-bottom: .6rem; }
+.process-flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 0; margin: 0 0 1.75rem; list-style: none; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.process-flow li { background: #e8efec; padding: .62rem .7rem; font-size: .92rem; font-weight: 650; color: var(--accent); }
+.demo-controls { display: flex; align-items: flex-start; flex-wrap: wrap; gap: .65rem 1.1rem; }
+.demo-controls details { padding: .43rem 0; font-size: .9375rem; }
+.demo-controls summary { cursor: pointer; color: var(--accent); }
+@media (max-width: 740px) { .process-flow { grid-template-columns: repeat(auto-fit, minmax(119px, 1fr)); } }
+@media (max-width: 820px) {
+  .platform-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .table-guide { display: block; }
+}
+@media (max-width: 600px) {
+  .section-heading, .platform-grid { grid-template-columns: 1fr; }
+  .section-heading h2 { margin-bottom: 0; }
+}
+
+.example { min-width: 760px; margin-block: .9rem 1rem; }
+.example th, .example td { padding: .72rem .55rem; vertical-align: top; }
+.example td:nth-child(n+2):nth-child(-n+4), .inputs td { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.example .batch-status { width: 37%; }
+.batch-window, .status-detail { display: block; margin-top: .24rem; color: var(--muted); font-size: .91rem; line-height: 1.45; font-weight: 400; }
+.no-entry { color: var(--muted); }
+.waiting { color: #4b507c; font-weight: 670; }
+.example-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.demo-controls details { max-width: 100%; }
+.inputs { min-width: 300px; margin: .4rem 0 0; }
+.inputs th, .inputs td { padding-inline: .55rem; }
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap">
+<a class="brand" href="#top"><span aria-hidden="true">CSB</span>Charu Shukla Badeka</a>
+<nav aria-label="Main navigation"><a href="#platform">Platform</a><a href="#work">Reconciliation</a><a href="#demo">Example</a><a href="#career">Background</a><a href="#contact">Links</a></nav>
+</div></header>
+<main id="main">
+<section class="wrap hero" aria-labelledby="hero-title">
+  <div>
+    <p class="kicker">Co-founder &amp; Head of Technology</p>
+    <h1 id="hero-title">Charu Shukla<br>Badeka</h1>
+    <p class="lead">I design fintech automation platforms from scratch. I work across finance, operations and engineering to turn a financial process into data contracts, executable rules, approval workflows and reporting that ties back to the source.</p>
+  </div>
+  <aside class="hero-aside" aria-labelledby="thread-title">
+    <h2 id="thread-title">Platform design</h2>
+    <p>ETL, a reconciliation builder, a dashboard builder, models for insights and anomaly detection, and a notification engine. I’ve also applied these patterns in the design of multiple internal management tools.</p>
+  </aside>
+</section>
+
+<section class="wrap section" id="platform" aria-labelledby="platform-title">
+  <div class="section-heading"><h2 id="platform-title">What I design</h2><p>I start with the financial event, the system that records it and the control that proves it was handled correctly. I then decide what belongs in the platform and what teams should be able to configure for each process.</p></div>
+  <ol class="process-flow" aria-label="Financial workflow stages"><li>Ingest and validate</li><li>Match and explain</li><li>Review and approve</li><li>Confirm posting</li><li>Monitor and alert</li></ol>
+  <dl class="platform-grid">
+    <div><dt>ETL builder</dt><dd>I define source adapters and configurable mappings for files, APIs and tables. Processing rules cover fixed-width and delimited layouts, record types, business dates, currency precision and debit/credit signs. I design validation, rejected-record handling and batch controls so operators can account for what entered the pipeline and safely rerun it.</dd></div>
+    <div><dt>Reconciliation builder</dt><dd>I design how teams configure source priority, match keys, date windows, tolerances and one-to-one or grouped matching. The design keeps candidate selection, the match decision and exception handling distinct, so an operator can inspect the rule and records behind a result.</dd></div>
+    <div><dt>Dashboard builder</dt><dd>I design configurable dimensions, measures and filters for match rates, open value, ageing and intake health. Each summary needs a path back to the records it counts, with clear definitions for denominators, business dates and currencies.</dd></div>
+    <div><dt>Models for insights and anomaly detection</dt><dd>I design signals for unusual break volumes, amount shifts, late files and changes in recurring mismatch patterns. I compare signals with the usual range for the source and cycle so expected volume changes do not dominate the review queue. Models help prioritize investigation. Matching and accounting decisions follow the configured rules and approval controls.</dd></div>
+    <div><dt>Notification engine</dt><dd>I design event triggers, recipients and escalation rules around operational events such as missing inputs, failed runs, pending approvals and ageing exceptions. In-app and email notifications should point to the affected run or work item so the recipient has enough context to act.</dd></div>
+    <div><dt>Internal management tools</dt><dd>I design operational workspaces around file readiness, run status, work queues and maker-checker approval. Operators need to know what is pending, who owns it and what changed. Reviewers need the evidence behind a rerun, override or posting decision.</dd></div>
+  </dl>
+</section>
+
+<section class="wrap section" id="work" aria-labelledby="work-title">
+  <div class="section-heading"><h2 id="work-title">Card reconciliation, from clearing to ledger</h2><p>Visa is the worked example. I check that clearing records are complete, tie the resulting position to settlement, then confirm what reached the ledger. Mastercard and bank reporting feeds require different comparisons, shown alongside it.</p></div>
+  <p class="table-guide" id="table-guide">On smaller screens, scroll the table horizontally.</p>
+  <div class="matrix-scroll" role="region" aria-label="Reconciliation design matrix" aria-describedby="table-guide" tabindex="0">
+    <table class="matrix">
+      <caption class="sr-only">Reconciliation sources, comparison logic and operational controls</caption>
+      <thead><tr><th scope="col">Process and feeds</th><th scope="col">Comparison and matching level</th><th scope="col">Controls and exceptions</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><strong>Visa clearing intake</strong><span>CTF · Edit Package (EP) files and reports</span></th><td>Compare processor records with the relevant incoming or outgoing clearing population. Check file and batch counts before joining transaction records. Use the acquirer reference number (ARN) or retrieval reference number (RRN) where available, with transaction type, direction and dates to disambiguate repeated references.</td><td>Track rejected records separately from records that failed to match. Isolate missing or duplicate batches, late presentments, and refunds or reversals that cannot be tied back to the original activity.</td></tr>
+        <tr><th scope="row"><strong>Visa settlement</strong><span>Accepted clearing · settlement reports · funding statement</span></th><td>Aggregate accepted activity by settlement cycle, currency and direction. Bridge gross clearing to net settlement using the relevant fees, adjustments and reversals, then compare the result with the funding movement.</td><td>Keep transaction and settlement currencies distinct. Separate cutoff and FX differences from missing funding, unexpected adjustments and unexplained net variances.</td></tr>
+        <tr><th scope="row"><strong>Visa accounting</strong><span>Approved outcomes · TTUM / GEFU · core banking / GL</span></th><td>Trace approved adjustments from the reconciliation result through the TTUM or GEFU handoff where applicable. Reconcile submissions against host acknowledgements and the entries actually booked in the ledger.</td><td>Check expected debit and credit legs, counts and amounts. Capture accepted and rejected rows separately and investigate missing or duplicate postings before closing the batch.</td></tr>
+        <tr><th scope="row"><strong>Mastercard clearing and settlement</strong><span>Mastercard TT files · IPM · processor records</span></th><td>Compare transaction detail in the TT and IPM feeds against processor activity according to each feed’s layout and reporting period. Compare the resulting totals with settlement records at the relevant cycle and currency level.</td><td>Separate presentments, refunds and adjustments. Check duplicates and cutoff differences, and explain the difference between transaction totals and net settlement.</td></tr>
+        <tr><th scope="row"><strong>Bank statement and cash reconciliation</strong><span>SWIFT MT940 / MT950 · ISO 20022 MX camt.053 · ledger</span></th><td>Map each statement format to a common view of account, entry reference, amount, direction and dates. Match entries to the cash ledger and reconcile opening and closing balances by account and currency.</td><td>Keep booking date and value date distinct. Flag missing or duplicate entries, split or aggregated bookings, and closing-balance differences that survive the roll-forward check.</td></tr>
+        <tr><th scope="row"><strong>UPI settlement cycles</strong><span>Network transaction and settlement files · switch · core banking</span></th><td>Match the three transaction populations where references are available, then verify the net amount for the settlement cycle against bank records.</td><td>Separate timing across cycles from reversals, adjustments and true missing legs. Keep cycle-level breaks traceable to individual transactions.</td></tr>
+        <tr><th scope="row"><strong>Contract-linked reconciliation</strong><span>Statement · contract data · GL</span></th><td>Use a shared transaction reference to enrich statement entries with contract identifiers, then check the corresponding postings at the appropriate transaction or contract level.</td><td>Route missing or ambiguous references for review. Flag cases where the amounts agree in total but are posted against the wrong contract.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="references">Format references
+    <a href="https://cis.visa.com/dam/VCOM/download/about-visa/visa-rules-public.pdf">Visa public rules</a>
+    <a href="https://www.mastercard.com/content/dam/public/mastercardcom/na/global-site/documents/dynamic-currency-conversion-may-2021.pdf">Mastercard IPM reference</a>
+    <a href="https://www.swift.com/iso-20022-standards">Swift ISO 20022 standards</a>
+  </p>
+</section>
+
+<section class="wrap section" id="demo" aria-labelledby="demo-title">
+  <div class="section-heading"><h2 id="demo-title">From card settlement to the ledger</h2><p>Six fictional Visa batches show how I distinguish a funding break from a posting break, and a late item from one that is still within its processing window.</p></div>
+  <div class="demo">
+    <p class="example-formula"><strong>Expected net settlement</strong> = gross clearing − refunds − fees in this example. All amounts are in USD.</p>
+    <div class="example-scroll" role="region" aria-label="Settlement comparison" tabindex="0"><table class="example">
+      <caption class="sr-only">Fictional Visa batches with expected settlement, bank funding and ledger postings in USD</caption>
+      <thead><tr><th scope="col">Batch and timing</th><th scope="col">Expected net</th><th scope="col">Bank funded</th><th scope="col">Ledger posted</th><th scope="col">Status and next step</th></tr></thead>
+      <tbody>
+        <tr data-gross="18425075" data-refunds="352025" data-fees="188450" data-funded="17884600" data-posted="17884600" data-due="true">
+          <th scope="row">V-2401<span class="batch-window">Past funding cutoff</span></th><td>178,846.00</td><td>178,846.00</td><td>178,846.00</td><td class="batch-status">Not checked</td>
+        </tr>
+        <tr data-gross="9678040" data-refunds="121560" data-fees="80480" data-funded="9463500" data-posted="9463500" data-due="true">
+          <th scope="row">V-2402<span class="batch-window">Past funding cutoff</span></th><td>94,760.00</td><td>94,635.00</td><td>94,635.00</td><td class="batch-status">Not checked</td>
+        </tr>
+        <tr data-gross="13250000" data-refunds="475000" data-fees="125000" data-funded="12650000" data-posted="" data-due="true">
+          <th scope="row">V-2403<span class="batch-window">Posting window open</span></th><td>126,500.00</td><td>126,500.00</td><td><span class="no-entry">No entry</span></td><td class="batch-status">Not checked</td>
+        </tr>
+        <tr data-gross="6825000" data-refunds="112500" data-fees="62500" data-funded="6650000" data-posted="6680000" data-due="true">
+          <th scope="row">V-2404<span class="batch-window">Posting confirmed</span></th><td>66,500.00</td><td>66,500.00</td><td>66,800.00</td><td class="batch-status">Not checked</td>
+        </tr>
+        <tr data-gross="5120000" data-refunds="100000" data-fees="65000" data-funded="" data-posted="" data-due="false">
+          <th scope="row">V-2405<span class="batch-window">Before funding cutoff</span></th><td>49,550.00</td><td><span class="no-entry">No entry</span></td><td><span class="no-entry">No entry</span></td><td class="batch-status">Not checked</td>
+        </tr>
+        <tr data-gross="7475000" data-refunds="62500" data-fees="37500" data-funded="" data-posted="" data-due="true">
+          <th scope="row">V-2406<span class="batch-window">Past funding cutoff</span></th><td>73,750.00</td><td><span class="no-entry">No entry</span></td><td><span class="no-entry">No entry</span></td><td class="batch-status">Not checked</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <div class="demo-controls">
+      <button id="run" type="button" hidden>Run checks</button>
+      <details><summary>View clearing inputs</summary>
+        <div class="example-scroll"><table class="inputs">
+          <caption class="sr-only">Fictional gross clearing, refunds and fees in USD</caption>
+          <thead><tr><th scope="col">Batch</th><th scope="col">Gross clearing</th><th scope="col">Refunds</th><th scope="col">Fees</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">V-2401</th><td>184,250.75</td><td>3,520.25</td><td>1,884.50</td></tr>
+            <tr><th scope="row">V-2402</th><td>96,780.40</td><td>1,215.60</td><td>804.80</td></tr>
+            <tr><th scope="row">V-2403</th><td>132,500.00</td><td>4,750.00</td><td>1,250.00</td></tr>
+            <tr><th scope="row">V-2404</th><td>68,250.00</td><td>1,125.00</td><td>625.00</td></tr>
+            <tr><th scope="row">V-2405</th><td>51,200.00</td><td>1,000.00</td><td>650.00</td></tr>
+            <tr><th scope="row">V-2406</th><td>74,750.00</td><td>625.00</td><td>375.00</td></tr>
+          </tbody>
+        </table></div>
+      </details>
+    </div>
+    <p id="result" class="demo-output" role="status"></p>
+    <noscript><p>Enable JavaScript to run the checks and see the status of each batch.</p></noscript>
+  </div>
+</section>
+
+<section class="wrap section split" id="career" aria-labelledby="career-title">
+  <div><h2 id="career-title">Background</h2><p>Embedded systems, full-stack engineering and fintech.</p></div>
+  <ol class="timeline">
+    <li><span class="period">Since 2021</span><div><h3>Fintech co-founder and Head of Technology</h3><p>I lead the design and delivery of configurable tools for financial operations, from source integration and reconciliation logic to case handling, analytics and accounting handoffs.</p></div></li>
+    <li><span class="period">2015–2021</span><div><h3>Full-stack development and project leadership</h3><p>I led education software projects, including ERP applications, and helped modernize Oracle-based systems.</p></div></li>
+    <li><span class="period">2010–2015</span><div><h3>Embedded engineering and R&amp;D</h3><p>I built firmware and Linux utilities for connected devices and building management.</p></div></li>
+    <li><span class="period">Education</span><div><h3>Electronics and embedded systems</h3><p>I studied electronics and communication in Ujjain and earned a master’s in embedded systems at DAVV in Indore.</p></div></li>
+  </ol>
+</section>
+<section class="wrap section contact" id="contact" aria-labelledby="contact-title">
+  <h2 id="contact-title">Elsewhere</h2>
+  <div class="contact-links"><a class="action" href="https://www.linkedin.com/in/charu-shukla-997b64aa/">LinkedIn</a><a class="action" href="https://github.com/charuBancapp">GitHub</a></div>
+</section>
+</main>
+<footer><div class="wrap"><span>Charu Shukla Badeka</span><a href="#top">Back to top</a></div></footer>
+<script>
+const runButton = document.querySelector('#run');
+const batches = document.querySelectorAll('tr[data-gross]');
+const result = document.querySelector('#result');
+const dollars = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+let checked = false;
+
+function describeBatch(batch) {
+  const { gross, refunds, fees, funded, posted, due } = batch.dataset;
+  const expected = Number(gross) - Number(refunds) - Number(fees);
+
+  if (funded === '') {
+    if (due === 'true') {
+      return ['Overdue funding', 'Check the bank statement and escalate the missing settlement for this cycle.', 'review'];
+    }
+    return ['Awaiting funding', 'The funding cutoff is still ahead. Check again after the window closes.', 'waiting'];
+  }
+
+  const fundingDelta = Number(funded) - expected;
+  if (fundingDelta !== 0) {
+    const status = fundingDelta < 0 ? 'Short funding' : 'Excess funding';
+    const variance = dollars.format(Math.abs(fundingDelta) / 100);
+    return [status, variance + ' difference. Compare network adjustments and the bank credit.', 'review'];
+  }
+
+  if (posted === '') {
+    return ['Posting pending', 'Funding agrees. Check the host acknowledgement before closing the batch.', 'waiting'];
+  }
+
+  const postingDelta = Number(posted) - Number(funded);
+  if (postingDelta !== 0) {
+    const variance = dollars.format(Math.abs(postingDelta) / 100);
+    const direction = postingDelta < 0 ? 'under' : 'over';
+    return ['Ledger variance', variance + ' ' + direction + ' the funded amount. Review the booked entries.', 'review'];
+  }
+
+  return ['Closed', 'Expected net, bank funding and ledger posting agree.', 'matched'];
+}
+
+runButton.hidden = false;
+runButton.addEventListener('click', () => {
+  checked = !checked;
+  const totals = { matched: 0, review: 0, waiting: 0 };
+
+  for (const batch of batches) {
+    const cell = batch.lastElementChild;
+    cell.textContent = 'Not checked';
+    cell.className = 'batch-status';
+
+    if (checked) {
+      const [label, guidance, type] = describeBatch(batch);
+      totals[type] += 1;
+      const status = document.createElement('strong');
+      status.textContent = label;
+      status.className = type;
+      const detail = document.createElement('span');
+      detail.textContent = guidance;
+      detail.className = 'status-detail';
+      cell.replaceChildren(status, detail);
+    }
+  }
+
+  result.textContent = checked
+    ? totals.matched + ' closed · ' + totals.review + ' need investigation · ' + totals.waiting + ' awaiting processing'
+    : 'Checks reset.';
+  runButton.textContent = checked ? 'Reset checks' : 'Run checks';
+});
+</script>
+</body>
+</html>
